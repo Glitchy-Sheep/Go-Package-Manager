@@ -1,6 +1,8 @@
 import * as vscode from 'vscode';
-import { queryPackageList } from '../services/goPackageService';
+import { PackageInfo } from '../models/package_info';
+import { GoAPI } from '../services/pkgGoDevSearchService';
 import { debounce } from '../utils/debounce';
+import { formatPackageItemDescription, formatPackageItemDetail, formatPackageItemLable } from '../utils/formatters';
 
 export async function add_package() {
 
@@ -9,8 +11,24 @@ export async function add_package() {
     quickPick.matchOnDescription = true;
     quickPick.matchOnDetail = true;
 
-    const updateItems = (query: string) => {
-        quickPick.items = queryPackageList(query);
+    const goApi = new GoAPI();
+
+    const updateItems = async (query: string) => {
+        try {
+            const response = await goApi.searchPackage(query);
+
+            const items = response.map((pkg: PackageInfo) => ({
+                label: formatPackageItemLable(pkg),
+                description: formatPackageItemDescription(pkg),
+                detail: formatPackageItemDetail(pkg),
+                data: pkg,
+            }));
+
+            quickPick.items = items;
+        } catch (error) {
+            console.error('Error fetching Go package data:', error);
+            quickPick.items = [];
+        }
     };
 
     const debouncedUpdateItems = debounce(updateItems, 2000);
