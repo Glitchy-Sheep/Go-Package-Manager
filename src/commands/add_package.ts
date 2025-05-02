@@ -15,7 +15,11 @@ export async function add_package() {
 
     const debouncedUpdateItems = debounce(updateItems, 2000);
 
-    quickPick.onDidChangeValue(debouncedUpdateItems);
+    quickPick.onDidChangeValue(query => {
+        quickPick.items = [];
+        debouncedUpdateItems(query);
+    });
+
     quickPick.onDidHide(() => quickPick.dispose());
 
     quickPick.show();
