@@ -25,6 +25,9 @@ export function activate(context: vscode.ExtensionContext) {
 	);
 }
 
-export function deactivate() { }
+export function deactivate() {
+	// There is no deactivation logic for the extension.
+	// But let it be here for the template consistency.
+}
 
 
