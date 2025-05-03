@@ -28,6 +28,12 @@ function packageToQuickPickItem(pkg: PackageInfo): QuickPickItemWithPackageInfo 
         description: formatPackageItemDescription(pkg),
         detail: formatPackageItemDetail(pkg),
         package: pkg,
+        buttons: [
+            {
+                iconPath: new vscode.ThemeIcon('globe'), // 🌐 icon
+                tooltip: 'Open the package in browser (docs)'
+            }
+        ]
     };
 }
 
@@ -62,6 +68,11 @@ export async function handlePackagePickerAction(
 
     PackagePickerStates.setLoading(packagePicker);
     packagePicker.show();
+
+    packagePicker.onDidTriggerItemButton((element) => {
+        const link = element.item.package.url;
+        vscode.env.openExternal(vscode.Uri.parse(link));
+    });
 
     try {
         const response = await pkgGoDevAPI.searchPackage(query);
