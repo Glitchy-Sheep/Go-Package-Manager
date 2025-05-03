@@ -67,6 +67,12 @@ export async function add_package_command() {
 
         const packagePickerItems = usageSortedPackages.map(packageToQuickPickItem);
 
+        if (packagePickerItems.length === 0) {
+            packagePicker.hide();
+            vscode.window.showErrorMessage(`No packages found by your query (${query})`);
+            return;
+        }
+
         PackagePickerStates.setResults(packagePicker, packagePickerItems);
     } catch (error) {
         packagePicker.hide();
