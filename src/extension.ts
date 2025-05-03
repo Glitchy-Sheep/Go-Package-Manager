@@ -7,14 +7,20 @@ import { add_package } from './commands/add_package';
 // Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
 
-	console.log('Congratulations, your extension "go-package-manager" is now active!');
-
-	const disposable = vscode.commands.registerCommand(
+	const add = vscode.commands.registerCommand(
 		'go-package-manager.add_package',
 		add_package_command
 	);
 
-	context.subscriptions.push(disposable);
+	const insert = vscode.commands.registerCommand(
+		'go-package-manager.insert_package',
+		insert_package_import_command
+	);
+
+	context.subscriptions.push(
+		add,
+		insert
+	);
 }
 
 export function deactivate() { }

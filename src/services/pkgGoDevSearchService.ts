@@ -2,7 +2,7 @@ import axios from "axios";
 import * as cheerio from "cheerio";
 import { PackageInfo } from "../models/package_info";
 
-export class GoAPI {
+export class PkgGoDevAPI {
     private readonly baseUrl: string;
 
     constructor(baseUrl: string = "https://pkg.go.dev/") {

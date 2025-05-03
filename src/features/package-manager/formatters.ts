@@ -1,4 +1,4 @@
-import { PackageInfo } from '../models/package_info';
+import { PackageInfo } from '../../models/package_info';
 
 
 export function formatPackageItemLable(PackageInfo: PackageInfo) {

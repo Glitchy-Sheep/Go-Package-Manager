@@ -16,6 +16,10 @@
       {
         "command": "go-package-manager.add_package",
         "title": "GPM: Add Go Package (go get)."
+      },
+      {
+        "command": "go-package-manager.insert_package",
+        "title": "GPM: Insert Go Package Import (Path)."
       }
     ]
   },
