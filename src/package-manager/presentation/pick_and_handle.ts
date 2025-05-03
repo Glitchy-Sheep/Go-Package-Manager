@@ -2,8 +2,10 @@ import * as vscode from 'vscode';
 import { getQueryFromUser } from '../../utils/get_query_from_user';
 import { PackageInfo } from "../models/package_info";
 import { QuickPickItemWithPackageInfo } from '../models/quick_pick_item_with_package_info';
-import { PkgGoDevAPI } from '../services/pkg_go_dev_api';
+import { PkgGoDevAPI, PkgGoDevHTTPError, PkgGoDevNetworkError, PkgGoDevUnexpectedError } from '../services/pkg_go_dev_api';
+import { notifyAboutHttpError, notifyAboutNetworkConnectionError, notifyAboutUnexpectedError } from './error_reporters';
 import { formatPackageItemDescription, formatPackageItemDetail, formatPackageItemLable } from './formatters';
+
 
 const PackagePickerStates = {
     setLoading(quickPick: vscode.QuickPick<vscode.QuickPickItem>) {
@@ -92,8 +94,23 @@ export async function handlePackagePickerAction(
         }
 
         PackagePickerStates.setResults(packagePicker, packagePickerItems);
-    } catch (error) {
+
+    } catch (error: any) {
         packagePicker.hide();
-        vscode.window.showErrorMessage((error as Error).message);
+
+        if (error instanceof PkgGoDevNetworkError) {
+            notifyAboutNetworkConnectionError();
+        } else if (error instanceof PkgGoDevHTTPError) {
+            // It can be destructive error which break the extension 
+            // so let the user report the bug.
+            notifyAboutHttpError(error);
+        } else if (error instanceof PkgGoDevUnexpectedError) {
+            // This is really bad case, shouldn't really even happen 
+            // but if so, let the user report the bug.
+            notifyAboutUnexpectedError(error);
+        } else {
+            // Critical hit, unexpected unexptectedness ✨
+            notifyAboutUnexpectedError(error);
+        }
     }
 }
