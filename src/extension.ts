@@ -11,7 +11,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 	const disposable = vscode.commands.registerCommand(
 		'go-package-manager.add_package',
-		add_package
+		add_package_command
 	);
 
 	context.subscriptions.push(disposable);
