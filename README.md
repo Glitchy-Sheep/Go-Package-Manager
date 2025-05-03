@@ -1,71 +1,74 @@
-# go-package-manager README
+# Go Package Manager 📦 <img src="https://raw.githubusercontent.com/Glitchy-Sheep/Go-Package-Manager/refs/heads/main/assets/go-logo.svg" width="80" style="vertical-align: middle;" />
 
-This is the README for your extension "go-package-manager". After writing up a brief description, we recommend including the following sections.
+The **Go Package Manager** is a Visual Studio Code extension designed to make working with Go packages effortless. 
 
-## Features
+**Install your go packages by their memorable names** instead of whole module.
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+**Or even use keywords** like `router` or `database`
 
-For example if there is an image subfolder under your extension project workspace:
+<img src="https://raw.githubusercontent.com/Glitchy-Sheep/Go-Package-Manager/refs/heads/main/assets/showcase.gif">
 
-\!\[feature X\]\(images/feature-x.png\)
+## Features ✨
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+- **Search/Install Go Packages directly from VSCode**: You can also check their licenses and used count.
+- **Sorted by Popularity**: Find reliable packages faster.
+- **Auto Insert `import...` and `go get` Command**.
+- **Open Package in Browser**: One-click to open any Go package in your default browser for further exploration.
 
-## Requirements
+## Guide 📃
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+1. Open command palette (`Ctrl + Shift + P`)
+2. Start typing any of the available commands (or their part):
+    - `GPM: Add Go Package (go get)`
+    - `GPM: Insert Go Package Import (Path)`
+3. Enter query (package name or keywords)
+4. Find package of your need and use it with pleasure ✨
 
-## Extension Settings
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+## Requirements ⚙️
 
-For example:
+The only things you need are:
+- **Internet connection** - for parsing packages information.
+- **Go**: Of course 😁
 
-This extension contributes the following settings:
+## Extension Settings ⚙️
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+This extension does not require additional settings (*yet*). 
+However, you can configure some behavior/hotkeys for commands to make it even faster.
 
-## Known Issues
+## Why did I build it 🔍
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+Go's `go get` and `import` system has always frustrated me.
 
-## Release Notes
+Coming from languages like Python, JavaScript, and Dart, *I missed the simplicity* of just installing packages `by name` — without dealing with `host/nickname/package` paths.
 
-Users appreciate release notes as you update your extension.
+**I could memorize packages, but github nicknames...**
+
+**This extension was born out of that pain.** 
+I just wanted to install a few packages, but instead had to:
+
+- Look up each package's page
+- Copy its full import path
+- Paste it into my code/terminal
+- Break my coding flow state
+- Run `go mod tidy`
+- And sometimes lose progress due to an accidental Ctrl+S that auto-formatted away my unused (yet) imports
+
+It was especially tedious when I was just learning the language.
+So, I built the tool to solve this problem.
+
+## Roadmap 🔧
+- [x] Search packages by name or keyword
+- [x] Show basic package information (used by / license / description)
+- [x] Auto-insert go get command
+- [x] Open package in browser
+- [x] Insert import into editor or clipboard
+- [ ] Settings for better UX
+- [ ] Batch install
+- [ ] Favorite packages/packs so you don't need to even remember their names and be the laziest person in da world.
+
+
+## Release Notes 📢
 
 ### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+- Initial release: Search, install, and manage Go packages with ease! 🎉
