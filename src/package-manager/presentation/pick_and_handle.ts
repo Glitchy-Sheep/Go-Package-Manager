@@ -1,8 +1,8 @@
 import * as vscode from 'vscode';
-import { PackageInfo } from "../../models/package_info";
-import { QuickPickItemWithPackageInfo } from '../../models/quick_pick_item_with_package_info';
-import { PkgGoDevAPI } from '../../services/pkgGoDevSearchService';
-import { getQueryFromUser } from "../../utils/get_query_from_user";
+import { getQueryFromUser } from '../../utils/get_query_from_user';
+import { PackageInfo } from "../models/package_info";
+import { QuickPickItemWithPackageInfo } from '../models/quick_pick_item_with_package_info';
+import { PkgGoDevAPI } from '../services/pkg_go_dev_api';
 import { formatPackageItemDescription, formatPackageItemDetail, formatPackageItemLable } from './formatters';
 
 const PackagePickerStates = {

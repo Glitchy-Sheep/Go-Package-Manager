@@ -1,7 +1,7 @@
 import * as vscode from "vscode";
-import { handlePackagePickerAction } from "../features/package-manager/pick_and_handle";
-import { PackageInfo } from "../models/package_info";
-import { PkgGoDevAPI } from "../services/pkgGoDevSearchService";
+import { PackageInfo } from "../package-manager/models/package_info";
+import { handlePackagePickerAction } from "../package-manager/presentation/pick_and_handle";
+import { PkgGoDevAPI } from "../package-manager/services/pkg_go_dev_api";
 
 function insert_or_copy_package_import(selectedPackage: PackageInfo) {
     const editor = vscode.window.activeTextEditor;
