@@ -27,11 +27,13 @@ export class GoAPI {
 
             $(".SearchSnippet").each((_, el) => {
                 const anchor = $(el).find("h2 a").first();
-                const url = anchor.attr("href") ?? "";
-                const fullUrl = url.startsWith("/") ? url.substring(1) : url;
+                const rawPackageUrl = anchor.attr("href") ?? "";
+                const url = rawPackageUrl.startsWith("/") ? rawPackageUrl.slice(1) : rawPackageUrl;
+                const fullUrl = this.baseUrl + url;
 
 
                 const importPathMatch = RegExp(/\((.*?)\)/).exec(anchor.text());
+
                 const name = anchor.clone().children().remove().end().text().trim();
                 const importPath = importPathMatch ? importPathMatch[1].trim() : "";
 
