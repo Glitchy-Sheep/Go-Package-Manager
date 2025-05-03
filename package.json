@@ -15,7 +15,7 @@
     "commands": [
       {
         "command": "go-package-manager.add_package",
-        "title": "Add package for the current Go project."
+        "title": "GPM: Add Go Package (go get)."
       }
     ]
   },
