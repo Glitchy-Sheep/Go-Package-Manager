@@ -36,7 +36,6 @@ function packageToQuickPickItem(pkg: PackageInfo): QuickPickItemWithPackageInfo 
 export async function add_package_command() {
     let query = await getQueryFromUser();
     if (query === undefined) {
-        vscode.window.showInformationMessage('No query provided, skip search');
         return;
     }
 
