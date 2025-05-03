@@ -1,5 +1,6 @@
 import axios from "axios";
 import * as cheerio from "cheerio";
+import { parseGoPackageInfoFromHTML } from "../data/parse_html_package_info";
 import { PackageInfo } from "../models/package_info";
 
 export class PkgGoDevAPI {
@@ -25,50 +26,12 @@ export class PkgGoDevAPI {
             const $ = cheerio.load(html);
             const packages: PackageInfo[] = [];
 
-            $(".SearchSnippet").each((_, el) => {
-                const anchor = $(el).find("h2 a").first();
-                const rawPackageUrl = anchor.attr("href") ?? "";
-                const url = rawPackageUrl.startsWith("/") ? rawPackageUrl.slice(1) : rawPackageUrl;
-                const fullUrl = this.baseUrl + url;
+            const rootPackagesHtmlContainer = $(".SearchSnippet");
 
-
-                const importPathMatch = RegExp(/\((.*?)\)/).exec(anchor.text());
-
-                const name = anchor.clone().children().remove().end().text().trim();
-                const importPath = importPathMatch ? importPathMatch[1].trim() : "";
-
-                const description = $(el).find(".SearchSnippet-synopsis").text().trim();
-
-                const usedByCount = $(el)
-                    .find(".SearchSnippet-infoLabel a strong")
-                    .first()
-                    .text()
-                    .trim();
-
-                const version = $(el)
-                    .find(".SearchSnippet-infoLabel strong")
-                    .eq(1)
-                    .text()
-                    .trim();
-                const publishedDate = $(el)
-                    .find('[data-test-id="snippet-published"] strong')
-                    .text()
-                    .trim();
-
-                const license = $(el)
-                    .find('[data-test-id="snippet-license"] a')
-                    .text()
-                    .trim();
-
-                packages.push({
-                    name,
-                    importPath,
-                    description,
-                    usedByCount,
-                    license,
-                    version: `${version} published on ${publishedDate}`,
-                    url: fullUrl,
-                });
+            rootPackagesHtmlContainer.each((_, packageHtml) => {
+                let packageCheerioElement = $(packageHtml);
+                const packageInfo = parseGoPackageInfoFromHTML(packageCheerioElement, this.baseUrl);
+                packages.push(packageInfo);
             });
 
             return packages;
