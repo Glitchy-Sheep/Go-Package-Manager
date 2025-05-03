@@ -2,13 +2,19 @@ import { PackageInfo } from '../models/package_info';
 
 
 export function formatPackageItemLable(PackageInfo: PackageInfo) {
-    return PackageInfo.name;
+    const url = `🌐 ${PackageInfo.url}`;
+    const name = `📦 ${PackageInfo.name}`;
+    return `${name} | ${url}`;
 }
 
 export function formatPackageItemDescription(PackageInfo: PackageInfo) {
-    return `🌐 (${PackageInfo.url}) | 📌 ${PackageInfo.version} | 📈 ${PackageInfo.usedByCount} | 📃 ${PackageInfo.license}`;
+    const version = `📌 ${PackageInfo.version}`;
+    return `${version} `;
 }
 
 export function formatPackageItemDetail(PackageInfo: PackageInfo) {
-    return PackageInfo.description;
+    const usedByCount = `📈 ${PackageInfo.usedByCount} `;
+    const license = `📃 ${PackageInfo.license} `;
+
+    return `${usedByCount} | ${license} | ${PackageInfo.description} `;
 }
