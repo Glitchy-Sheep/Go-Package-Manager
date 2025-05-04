@@ -5,8 +5,8 @@
   },
   "name": "go-package-manager",
   "displayName": "Go Package Manager",
-  "description": "",
-  "version": "0.0.1",
+  "description": "Make import/install Go Packages easier and faster ⚡",
+  "version": "1.0.0",
   "engines": {
     "vscode": "^1.99.0"
   },
