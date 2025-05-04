@@ -1,9 +1,7 @@
-# Change Log
+## Changelog
 
-All notable changes to the "go-package-manager" extension will be documented in this file.
+### 1.0.1
+- Add new gopher logo for the extension
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
-
-## [Unreleased]
-
-- Initial release
+### 1.0.0
+- Initial release: Search, install, and manage Go packages with ease! 🎉
