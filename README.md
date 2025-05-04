@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Glitchy-Sheep/Go-Package-Manager/532c0fe6bcfdd08a4f5285c1e58931dccdf47e5d/assets/header.svg" width="700"/>
+  <img src="https://raw.githubusercontent.com/Glitchy-Sheep/Go-Package-Manager/refs/heads/main/assets/header.png" width="700"/>
 </p>
 
 The **Go Package Manager** is a Visual Studio Code extension designed to make working with Go packages effortless. 
