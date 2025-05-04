@@ -1,4 +1,5 @@
 {
+  "icon": "./assets/extension-logo.png",
   "publisher": "Glitchy-Sheep",
   "repository": {
     "type": "git",
