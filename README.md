@@ -72,6 +72,9 @@ So, I built the tool to solve this problem.
 
 ## Release Notes 📢
 
+### 1.0.2
+- Make gopher bigger (logo resolution 128->1024)
+
 ### 1.0.1
 - Add new gopher logo for the extension
 
