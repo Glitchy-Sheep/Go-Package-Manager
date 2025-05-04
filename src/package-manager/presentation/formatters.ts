@@ -2,7 +2,7 @@ import { PackageInfo } from '../models/package_info';
 
 
 export function formatPackageItemLable(PackageInfo: PackageInfo) {
-    const url = `🌐 ${PackageInfo.url}`;
+    const url = `🌐 ${PackageInfo.importPath}`;
     const name = `📦 ${PackageInfo.name}`;
     return `${name} | ${url}`;
 }
