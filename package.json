@@ -1,4 +1,8 @@
 {
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Glitchy-Sheep/Go-Package-Manager"
+  },
   "name": "go-package-manager",
   "displayName": "Go Package Manager",
   "description": "",
